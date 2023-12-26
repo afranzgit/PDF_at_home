@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  nginx:
+    build: .
+    ports:
+      - "2514:2514"
+    depends_on:
+      - s-pdf
+    networks:
+      - dockerFranz
+
+  s-pdf:
+    image: frooodle/s-pdf
+    ports:
+      - "9080:8080"
+    expose:
+      - "9080"
+      - "8080"
+    networks:
+      - dockerFranz
+
+networks:
+  dockerFranz:
+    external: true
