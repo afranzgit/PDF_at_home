@@ -14,9 +14,6 @@ services:
     image: frooodle/s-pdf
     ports:
       - "9080:8080"
-    expose:
-      - "9080"
-      - "8080"
     networks:
       - dockerFranz
 
