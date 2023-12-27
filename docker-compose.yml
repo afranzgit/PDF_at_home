@@ -6,11 +6,21 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - s-pdf
+      - pdf
     links:
-      - s-pdf
+      - pdf
     expose:
       - 8081
 
-  s-pdf:
+  pdf:
     image: frooodle/s-pdf
+
+  collabora:
+    image: collabora/code
+    container_name: collabora_container
+    restart: always
+    cap_add:
+      - MKNOD
+    environment:
+      - domain=cloud\\.hofra\\.net
+      - extra_params=--o:ssl.enable=false --o:ssl.termination=true

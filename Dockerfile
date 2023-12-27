@@ -5,7 +5,7 @@ FROM nginx:latest
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy a custom configuration file from the current directory
-COPY nginx.conf /etc/nginx/conf.d/
+COPY ./NGINX /etc/nginx/conf.d/
 
 
 # Expose port 9080
