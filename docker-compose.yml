@@ -4,19 +4,13 @@ services:
   nginx:
     build: .
     ports:
-      - "2514:2514"
+      - "8081:8081"
     depends_on:
       - s-pdf
-    networks:
-      - dockerFranz
+    links:
+      - s-pdf
+    expose:
+      - 8081
 
   s-pdf:
     image: frooodle/s-pdf
-    ports:
-      - "9080:8080"
-    networks:
-      - dockerFranz
-
-networks:
-  dockerFranz:
-    external: true
