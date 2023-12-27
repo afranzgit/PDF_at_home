@@ -20,4 +20,3 @@ Note: _startup.sh_ is currently not absolutely necessary, it is a setup to intrd
       curl http://s-pdf:8080
     ```
 - due to the docker-compose only the nginx-image is a ccessible via published and exposed ports. The others can only be accessed from inside the docker host net.
--
