@@ -19,7 +19,6 @@ fi
 # Run Docker Compose
 docker-compose up --build
 
-# Check if Docker Compose was successful
 if [ $? -eq 0 ]; then
     echo "Docker Compose executed successfully."
 else
