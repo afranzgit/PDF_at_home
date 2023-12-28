@@ -19,9 +19,6 @@ services:
   pdf:
     image: frooodle/s-pdf
 
-
-
-services:
   db:
     image: mariadb:10.6
     restart: always
@@ -38,7 +35,7 @@ services:
     image: nextcloud
     restart: always
     ports:
-      - 8080:80
+      - 9080:80
     links:
       - db
     volumes:
