@@ -45,3 +45,12 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
+
+  collabora:
+    image: collabora/code
+    container_name: collabora_code
+    environment:
+      - extra_params=--o:ssl.enable=false
+    ports:
+      - "8083:9980"
+    restart: unless-stopped
