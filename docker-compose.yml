@@ -62,5 +62,4 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
-      - certbot/letsencrypt:/etc/letsencrypt
-      - certbot:/var/www/certbot
+      - certbot:/etc/letsencrypt
