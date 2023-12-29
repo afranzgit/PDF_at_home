@@ -3,18 +3,27 @@ version: "3.8"
 volumes:
   nextcloud:
   db:
+  certbot:
 
 services:
   nginx:
     build: .
     ports:
       - "8081:8081"
+      - "8082:8082"
+      - "8083:8083"
     depends_on:
       - pdf
+      - collabora
+      - nextcloudApp
     links:
       - pdf
+      - collabora
+      - nextcloudApp
     expose:
       - 8081
+      - 8082
+      - 8083
 
   pdf:
     image: frooodle/s-pdf
@@ -34,10 +43,9 @@ services:
   nextcloudApp:
     image: nextcloud
     restart: always
-    ports:
-      - 8082:80
     links:
       - db
+      - collabora
     volumes:
       - nextcloud:/var/www/html
     environment:
@@ -48,9 +56,11 @@ services:
 
   collabora:
     image: collabora/code
-    container_name: collabora_code
     environment:
       - extra_params=--o:ssl.enable=false
-    ports:
-      - "8083:9980"
-    restart: unless-stopped
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot/letsencrypt:/etc/letsencrypt
+      - certbot:/var/www/certbot
